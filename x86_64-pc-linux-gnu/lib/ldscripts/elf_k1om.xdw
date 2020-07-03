@@ -7,7 +7,7 @@ OUTPUT_FORMAT("elf64-k1om", "elf64-k1om",
 	      "elf64-k1om")
 OUTPUT_ARCH(k1om)
 ENTRY(_start)
-SEARCH_DIR("/home/heros32/tc-build/install/x86_64-pc-linux-gnu/lib"); SEARCH_DIR("/home/heros32/tc-build/install/lib"); SEARCH_DIR("/usr/local/lib"); SEARCH_DIR("/lib"); SEARCH_DIR("/usr/lib");
+SEARCH_DIR("/home/fadly/llvm/install/x86_64-pc-linux-gnu/lib"); SEARCH_DIR("/home/fadly/llvm/install/lib"); SEARCH_DIR("/usr/local/lib"); SEARCH_DIR("/lib"); SEARCH_DIR("/usr/lib");
 SECTIONS
 {
   /* Read-only sections, merged into text segment: */

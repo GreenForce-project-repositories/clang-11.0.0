@@ -7,7 +7,7 @@ OUTPUT_FORMAT("elf32-iamcu", "elf32-iamcu",
 	      "elf32-iamcu")
 OUTPUT_ARCH(iamcu)
 ENTRY(_start)
-SEARCH_DIR("/home/heros32/tc-build/install/x86_64-pc-linux-gnu/lib");
+SEARCH_DIR("/home/fadly/llvm/install/x86_64-pc-linux-gnu/lib");
 SECTIONS
 {
   /* Read-only sections, merged into text segment: */
