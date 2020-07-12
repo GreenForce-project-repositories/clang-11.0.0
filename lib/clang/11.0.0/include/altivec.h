@@ -16889,6 +16889,144 @@ vec_cnttzm(vector unsigned long long __a, vector unsigned long long __b) {
 
 #define vec_srdb(__a, __b, __c) __builtin_altivec_vsrdbi(__a, __b, (__c & 0x7))
 
+/* vec_insertl */
+
+static __inline__ vector unsigned char __ATTRS_o_ai
+vec_insertl(unsigned char __a, vector unsigned char __b, unsigned int __c) {
+#ifdef __LITTLE_ENDIAN__
+  return __builtin_altivec_vinsbrx(__b, __c, __a);
+#else
+  return __builtin_altivec_vinsblx(__b, __c, __a);
+#endif
+}
+
+static __inline__ vector unsigned short __ATTRS_o_ai
+vec_insertl(unsigned short __a, vector unsigned short __b, unsigned int __c) {
+#ifdef __LITTLE_ENDIAN__
+  return __builtin_altivec_vinshrx(__b, __c, __a);
+#else
+  return __builtin_altivec_vinshlx(__b, __c, __a);
+#endif
+}
+
+static __inline__ vector unsigned int __ATTRS_o_ai
+vec_insertl(unsigned int __a, vector unsigned int __b, unsigned int __c) {
+#ifdef __LITTLE_ENDIAN__
+  return __builtin_altivec_vinswrx(__b, __c, __a);
+#else
+  return __builtin_altivec_vinswlx(__b, __c, __a);
+#endif
+}
+
+static __inline__ vector unsigned long long __ATTRS_o_ai
+vec_insertl(unsigned long long __a, vector unsigned long long __b,
+            unsigned int __c) {
+#ifdef __LITTLE_ENDIAN__
+  return __builtin_altivec_vinsdrx(__b, __c, __a);
+#else
+  return __builtin_altivec_vinsdlx(__b, __c, __a);
+#endif
+}
+
+static __inline__ vector unsigned char __ATTRS_o_ai
+vec_insertl(vector unsigned char __a, vector unsigned char __b,
+            unsigned int __c) {
+#ifdef __LITTLE_ENDIAN__
+  return __builtin_altivec_vinsbvrx(__b, __c, __a);
+#else
+  return __builtin_altivec_vinsbvlx(__b, __c, __a);
+#endif
+}
+
+static __inline__ vector unsigned short __ATTRS_o_ai
+vec_insertl(vector unsigned short __a, vector unsigned short __b,
+            unsigned int __c) {
+#ifdef __LITTLE_ENDIAN__
+  return __builtin_altivec_vinshvrx(__b, __c, __a);
+#else
+  return __builtin_altivec_vinshvlx(__b, __c, __a);
+#endif
+}
+
+static __inline__ vector unsigned int __ATTRS_o_ai
+vec_insertl(vector unsigned int __a, vector unsigned int __b,
+            unsigned int __c) {
+#ifdef __LITTLE_ENDIAN__
+  return __builtin_altivec_vinswvrx(__b, __c, __a);
+#else
+  return __builtin_altivec_vinswvlx(__b, __c, __a);
+#endif
+}
+
+/* vec_inserth */
+
+static __inline__ vector unsigned char __ATTRS_o_ai
+vec_inserth(unsigned char __a, vector unsigned char __b, unsigned int __c) {
+#ifdef __LITTLE_ENDIAN__
+  return __builtin_altivec_vinsblx(__b, __c, __a);
+#else
+  return __builtin_altivec_vinsbrx(__b, __c, __a);
+#endif
+}
+
+static __inline__ vector unsigned short __ATTRS_o_ai
+vec_inserth(unsigned short __a, vector unsigned short __b, unsigned int __c) {
+#ifdef __LITTLE_ENDIAN__
+  return __builtin_altivec_vinshlx(__b, __c, __a);
+#else
+  return __builtin_altivec_vinshrx(__b, __c, __a);
+#endif
+}
+
+static __inline__ vector unsigned int __ATTRS_o_ai
+vec_inserth(unsigned int __a, vector unsigned int __b, unsigned int __c) {
+#ifdef __LITTLE_ENDIAN__
+  return __builtin_altivec_vinswlx(__b, __c, __a);
+#else
+  return __builtin_altivec_vinswrx(__b, __c, __a);
+#endif
+}
+
+static __inline__ vector unsigned long long __ATTRS_o_ai
+vec_inserth(unsigned long long __a, vector unsigned long long __b,
+            unsigned int __c) {
+#ifdef __LITTLE_ENDIAN__
+  return __builtin_altivec_vinsdlx(__b, __c, __a);
+#else
+  return __builtin_altivec_vinsdrx(__b, __c, __a);
+#endif
+}
+
+static __inline__ vector unsigned char __ATTRS_o_ai
+vec_inserth(vector unsigned char __a, vector unsigned char __b,
+            unsigned int __c) {
+#ifdef __LITTLE_ENDIAN__
+  return __builtin_altivec_vinsbvlx(__b, __c, __a);
+#else
+  return __builtin_altivec_vinsbvrx(__b, __c, __a);
+#endif
+}
+
+static __inline__ vector unsigned short __ATTRS_o_ai
+vec_inserth(vector unsigned short __a, vector unsigned short __b,
+            unsigned int __c) {
+#ifdef __LITTLE_ENDIAN__
+  return __builtin_altivec_vinshvlx(__b, __c, __a);
+#else
+  return __builtin_altivec_vinshvrx(__b, __c, __a);
+#endif
+}
+
+static __inline__ vector unsigned int __ATTRS_o_ai
+vec_inserth(vector unsigned int __a, vector unsigned int __b,
+            unsigned int __c) {
+#ifdef __LITTLE_ENDIAN__
+  return __builtin_altivec_vinswvlx(__b, __c, __a);
+#else
+  return __builtin_altivec_vinswvrx(__b, __c, __a);
+#endif
+}
+
 #ifdef __VSX__
 
 /* vec_permx */
@@ -16898,8 +17036,9 @@ vec_cnttzm(vector unsigned long long __a, vector unsigned long long __b) {
 
 /* vec_blendv */
 
-static __inline__ vector signed char __ATTRS_o_ai vec_blendv(
-    vector signed char __a, vector signed char __b, vector unsigned char __c) {
+static __inline__ vector signed char __ATTRS_o_ai
+vec_blendv(vector signed char __a, vector signed char __b,
+           vector unsigned char __c) {
   return __builtin_vsx_xxblendvb(__a, __b, __c);
 }
 
@@ -16954,6 +17093,58 @@ static __inline__ vector double __ATTRS_o_ai
 vec_blendv(vector double __a, vector double __b,
            vector unsigned long long __c) {
   return __builtin_vsx_xxblendvd(__a, __b, __c);
+}
+
+/* vec_splati */
+
+#define vec_splati(__a)                                                        \
+  _Generic((__a), signed int                                                   \
+           : ((vector signed int)__a), unsigned int                            \
+           : ((vector unsigned int)__a), float                                 \
+           : ((vector float)__a))
+
+/* vec_spatid */
+
+static __inline__ vector double __ATTRS_o_ai vec_splatid(const float __a) {
+  return ((vector double)((double)__a));
+}
+
+/* vec_splati_ins */
+
+static __inline__ vector signed int __ATTRS_o_ai vec_splati_ins(
+    vector signed int __a, const unsigned int __b, const signed int __c) {
+#ifdef __LITTLE_ENDIAN__
+  __a[1 - __b] = __c;
+  __a[3 - __b] = __c;
+#else
+  __a[__b] = __c;
+  __a[2 + __b] = __c;
+#endif
+  return __a;
+}
+
+static __inline__ vector unsigned int __ATTRS_o_ai vec_splati_ins(
+    vector unsigned int __a, const unsigned int __b, const unsigned int __c) {
+#ifdef __LITTLE_ENDIAN__
+  __a[1 - __b] = __c;
+  __a[3 - __b] = __c;
+#else
+  __a[__b] = __c;
+  __a[2 + __b] = __c;
+#endif
+  return __a;
+}
+
+static __inline__ vector float __ATTRS_o_ai
+vec_splati_ins(vector float __a, const unsigned int __b, const float __c) {
+#ifdef __LITTLE_ENDIAN__
+  __a[1 - __b] = __c;
+  __a[3 - __b] = __c;
+#else
+  __a[__b] = __c;
+  __a[2 + __b] = __c;
+#endif
+  return __a;
 }
 #endif /* __VSX__ */
 #endif /* __POWER10_VECTOR__ */
