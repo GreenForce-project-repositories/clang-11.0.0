@@ -1,10 +1,10 @@
 /* Script for -r */
-/* Copyright (C) 2014-2020 Free Software Foundation, Inc.
+/* Copyright (C) 2014-2021 Free Software Foundation, Inc.
    Copying and distribution of this script, with or without modification,
    are permitted in any medium without royalty provided the copyright
    notice and this notice are preserved.  */
 OUTPUT_FORMAT(pe-x86-64)
-SEARCH_DIR("/home/fadly/tcb/install/x86_64-pep/lib"); SEARCH_DIR("/home/fadly/tcb/install/lib"); SEARCH_DIR("/usr/local/lib"); SEARCH_DIR("/lib"); SEARCH_DIR("/usr/lib");
+SEARCH_DIR("/home/Fais/tc-build/install/x86_64-pep/lib"); SEARCH_DIR("/home/Fais/tc-build/install/lib"); SEARCH_DIR("/usr/local/lib"); SEARCH_DIR("/lib"); SEARCH_DIR("/usr/lib");
 SECTIONS
 {
   .text  :
